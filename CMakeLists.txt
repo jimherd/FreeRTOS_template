@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-set (THE_PROJECT_NAME "Pico_FreeRTOS_template")  # set project name
+set (THE_PROJECT_NAME "Pi_the_Robot")  # set project name
 
 file(TO_CMAKE_PATH "$ENV{PICO_SDK_PATH}" PICO_SDK_PATH_CMAKE)
 
@@ -73,7 +73,7 @@ pico_enable_stdio_uart(${PROJECT_NAME} 1)
 add_custom_command(TARGET ${PROJECT_NAME}
     POST_BUILD
     COMMAND date.exe /t >> ${CMAKE_SOURCE_DIR}/File_size.txt
-    COMMAND arm-none-eabi-size.exe -G Robokid_Pico_FreeRTOS.elf
-    COMMAND arm-none-eabi-size.exe -G Robokid_Pico_FreeRTOS.elf  >> ${CMAKE_SOURCE_DIR}/File_size.txt
+    COMMAND arm-none-eabi-size.exe -G ${THE_PROJECT_NAME}.elf
+    COMMAND arm-none-eabi-size.exe -G ${THE_PROJECT_NAME}.elf  >> ${CMAKE_SOURCE_DIR}/File_size.txt
     VERBATIM
 )

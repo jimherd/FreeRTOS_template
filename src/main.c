@@ -8,12 +8,12 @@
 
 #include "system.h"
 
-
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "pico/binary_info.h"
 #include "hardware/adc.h"
 #include "hardware/dma.h"
+#include "hardware/i2c.h"
 
 #include  "Pico_IO.h"
 
@@ -68,6 +68,14 @@ int main()
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
     uart_puts(UART_ID, "Hello\n");
+
+        // I2C Initialisation. Using it at 400Khz.
+    i2c_init(I2C_PORT, 400*1000);
+    
+    gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(I2C_SDA);
+    gpio_pull_up(I2C_SCL);
 
     adc_init();
 
