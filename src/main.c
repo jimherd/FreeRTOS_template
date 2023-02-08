@@ -14,6 +14,7 @@
 #include "pico/binary_info.h"
 #include "hardware/adc.h"
 #include "hardware/dma.h"
+#include "hardware/i2c.h"
 
 #include  "Pico_IO.h"
 
